@@ -1,17 +1,17 @@
-import './App.css';
+import './App.css'
 import star from "./images/icon-star.svg"
 import thankimg from "./images/illustration-thank-you.svg"
+import { useState } from "react"
 
 
 function App() {
 
-  // const Button ({number}) => {
-  //   return <button>{number}</button>
-  // }
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   return (
     <div className="App">
-      <div className="wrapper">
+
+      {!isSubmitted && <div className="wrapper">
 
         <img className='bg-gray-700 rounded-full p-2' src={star} alt="" />
 
@@ -29,12 +29,17 @@ function App() {
         </ul>
 
         <div className='text-center'>
-          <button className='btn-rating rounded-full w-full text-white uppercase tracking-wide pt-3 pb-2'>Submit</button>
+          <button onClick={() => setIsSubmitted(true)} className='btn-rating rounded-full w-full text-white uppercase tracking-wide pt-3 pb-2'>Submit</button>
         </div>
 
-        <ThankYou />
+      
+        
 
-      </div>
+      </div>}
+
+      
+      {isSubmitted && <ThankYou />}
+    
     </div>
   );
 }
@@ -42,16 +47,21 @@ function App() {
 const ThankYou = () => {
   return (
     <div className="wrapper">
-      <img src={thankimg} alt="" />
+      <img src={thankimg} alt="" className='block mx-auto mb-6' />
 
-      <p>You selected number out of 5</p>
-      
+      <div className='flex justify-center'>
+
+        <p className='p-rating bg-gray-700 text-center rounded-full pt-1 text-sm px-3'>You selected number out of 5</p>
+
+      </div>
+
       <h2 className='text-gray-100 text-3xl my-6 text-center'>Thank You</h2>
-      
-      <p className='text-gray-400 mb-10 text-center'>We appreciate you taking the time to give a rating. If you ever need more support,
+
+      <p className='text-gray-400 mb-10 text-center mb-10'>We appreciate you taking the time to give a rating. If you ever need more support,
         don’t hesitate to get in touch!</p>
-    
+
     </div>
+
   )
 }
 

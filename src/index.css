@@ -43,6 +43,10 @@ body {
   background-color: var(--Orange);
 }
 
+.p-rating{
+  color: var(--Orange);
+}
+
 @media (min-width: 500px){
   .wrapper{
     width: 400px;
